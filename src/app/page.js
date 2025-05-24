@@ -10,6 +10,7 @@ export default function Home() {
           alt="Next.js logo"
           width={180}
           height={38}
+          style={{ width: 'auto', height: 'auto' }}  // This maintains the aspect ratio
           priority
         />
         <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
@@ -36,6 +37,8 @@ export default function Home() {
               alt="Vercel logomark"
               width={20}
               height={20}
+              style={{ width: 'auto', height: 'auto' }}  // This maintains the aspect ratio
+              priority
             />
             Deploy now
           </a>
@@ -62,6 +65,8 @@ export default function Home() {
             alt="File icon"
             width={16}
             height={16}
+            style={{ width: 'auto', height: 'auto' }}  // This maintains the aspect ratio
+            priority
           />
           Learn
         </a>
@@ -77,6 +82,8 @@ export default function Home() {
             alt="Window icon"
             width={16}
             height={16}
+            style={{ width: 'auto', height: 'auto' }}  // This maintains the aspect ratio
+            priority
           />
           Examples
         </a>
@@ -92,6 +99,8 @@ export default function Home() {
             alt="Globe icon"
             width={16}
             height={16}
+            style={{ width: 'auto', height: 'auto' }}  // This maintains the aspect ratio
+            priority
           />
           Go to nextjs.org →
         </a>
