@@ -66,8 +66,10 @@ export default function NavBar() {
                     {navMenu()}
                 </ul>
             </div>
-            <div className="navbar-end">
-                <a className="btn btn-outline">Appointment</a>
+            <div className="navbar-end gap-1">
+                <Link href={'/register'} className="btn btn-outline">Register</Link>
+                <Link href={'/login'} className="btn btn-outline">Login</Link>
+                <Link href={'/appointment'} className="btn btn-outline">Appointment</Link >
             </div>
         </div>
     )
