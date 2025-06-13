@@ -1,6 +1,7 @@
 import dbConnect, { collectionNamesObj } from '@/lib/dbConnect';
 import { ObjectId } from 'mongodb';
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react'
 
 export default async function ServiceDetailsPage({ params }) {
@@ -10,37 +11,49 @@ export default async function ServiceDetailsPage({ params }) {
     const data = await servicesCollection.findOne({ _id: new ObjectId(id) });
 
     return (
-        <div>
-            <section className='flex justify-center '>
-                <figure className='relative'>
+        <div className="container mx-auto">
+            <section className="flex justify-center ">
+                <figure className="relative">
                     <Image
                         src={"/assets/images/checkout/checkout.png"}
-                        alt="Banner"
                         width={1137}
                         height={300}
+                        alt={"banner"}
                     />
-                    <div className='transparent-layer overlay-bg  absolute w-full h-full top-0 border-2 border-red-400'>
-                        <div className='w-full h-full font-bold text-2xl flex items-center ps-16'>
+                    <div className="transparent-layer overlay-bg absolute w-full h-full border-2 border-red-400 top-0">
+                        <div className="w-full h-full font-bold text-2xl flex items-center ps-16">
                             <div>
-                                <h1 className='text-white'>Service Details</h1>
-
+                                <h1 className="text-white">{data.title}</h1>
                             </div>
                         </div>
                     </div>
                 </figure>
             </section>
-
-            <section>
-                <Image
-                    src={data?.img}
-                    alt="Service Image"
-                    width={500}
-                    height={500}
-                />
-                <h1 className='text-3xl font-bold'>{data?.title}</h1>
+            <section className="container mx-auto grid grid-cols-12 gap-4 mt-4">
+                {/* Left Side */}
+                <div className="col-span-9 space-y-4">
+                    <Image
+                        className="w-full"
+                        src={data?.img}
+                        width={400}
+                        height={280}
+                        alt={data.title}
+                    />
+                    <h1 className="font-bold text-3xl">{data.title}</h1>
+                    <p className="text-justify">{data?.description}</p>
+                </div>
+                {/* Right Side */}
+                <div className="col-span-3 space-y-4">
+                    <Link href={`/checkout/${data._id}`}>
+                        <button className="w-full text-white h-9 bg-orange-500">
+                            Checkout
+                        </button>
+                    </Link>
+                    <p className="text-center text-xl font-bold">
+                        Price: $ {data?.price}
+                    </p>
+                </div>
             </section>
-            ServiceDetails: {id}
-            <pre>{JSON.stringify(data)}</pre>
         </div>
-    )
+    );
 }
