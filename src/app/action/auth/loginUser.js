@@ -10,15 +10,11 @@ export async function loginUser(payload) {
 
     const user = await usersCollection.findOne({ email });
 
-    if (!user) {
-        return { error: "User not found" };
-    }
+    if (!user) return null;
 
     const isPasswordOk = await bcrypt.compare(password, user.password);
 
-    if (!isPasswordOk) {
-        return { error: "Invalid password" };
-    }
+    if (!isPasswordOk) return null;
 
     return user;
 }

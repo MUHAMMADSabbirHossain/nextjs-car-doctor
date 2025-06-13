@@ -10,9 +10,7 @@ export async function registerUser(payload) {
 
     // Validation
     const { name, email, password } = payload;
-    if (!name || !email || !password) {
-        return { error: "All fields are required" };
-    }
+    if (!name || !email || !password) return null;
 
     const user = await usersCollection.findOne({ email: payload.email });
 
@@ -21,8 +19,10 @@ export async function registerUser(payload) {
 
         payload.password = hashedPassword;
         const result = await usersCollection.insertOne(payload);
-        const { acknowledged, insertedId } = result;
-        return { acknowledged, insertedId };
+
+        result.insertedId = result.insertedId.toString();
+
+        return result;
     }
 
     return { error: "User already exists" };

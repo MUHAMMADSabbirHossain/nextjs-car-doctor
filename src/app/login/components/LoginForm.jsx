@@ -2,8 +2,11 @@
 import React from 'react'
 import { signIn } from 'next-auth/react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import toast from 'react-hot-toast';
 
 export default function LoginForm() {
+    const router = useRouter();
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -12,8 +15,20 @@ export default function LoginForm() {
         const data = Object.fromEntries(formData);
         console.log(data);
 
+        toast("Logging in...")
+
         try {
-            await signIn("credentials", { ...data, callbackUrl: "/" });
+            const response = await signIn("credentials", { ...data, callbackUrl: "/", redirect: false });
+            console.log(response);
+
+            if (response.ok) {
+                toast.success("Login successful!");
+                router.push(response.url);
+                e.target.reset();
+
+            } else {
+                toast.error("Login failed!");
+            }
         } catch (error) {
             console.log(error);
             alert("Login authentication failed!");
