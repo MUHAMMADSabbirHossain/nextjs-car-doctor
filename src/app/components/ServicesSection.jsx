@@ -6,7 +6,7 @@ import { FaArrowRight } from "react-icons/fa";
 
 export default async function ServicesSection() {
     const serviceCollection = dbConnect(collectionNamesObj.servicesCollection);
-    console.log(serviceCollection);
+    // console.log(serviceCollection);
 
     const data = await serviceCollection.find({}).toArray();
 
