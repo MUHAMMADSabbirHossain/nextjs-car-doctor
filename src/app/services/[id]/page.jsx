@@ -7,8 +7,11 @@ import React from 'react'
 export default async function ServiceDetailsPage({ params }) {
     const { id } = await params;
 
-    const servicesCollection = dbConnect(collectionNamesObj.servicesCollection);
-    const data = await servicesCollection.findOne({ _id: new ObjectId(id) });
+    // const servicesCollection = dbConnect(collectionNamesObj.servicesCollection);
+    // const data = await servicesCollection.findOne({ _id: new ObjectId(id) });
+
+    const res = await fetch(`http://localhost:3000/api/services/${id}`);
+    const data = await res.json();
 
     return (
         <div className="container mx-auto">
