@@ -3,7 +3,6 @@ import { signOut, useSession } from 'next-auth/react';
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
-import { FaUser } from 'react-icons/fa';
 
 export default function NavBar() {
     const { data: session, status } = useSession();
@@ -74,7 +73,14 @@ export default function NavBar() {
             </div>
             <div className="navbar-end gap-1">
                 {status === 'authenticated' ? (<>
-                    <p><FaUser className='text-2xl text-orange-500' /></p>
+                    <Image
+                        src={session?.user?.image}
+                        alt={session?.user?.name}
+                        width={30}
+                        height={30}
+                        className='rounded-full'
+                    />
+                    {/* <p><FaUser className='text-2xl text-orange-500' /></p> */}
                     <button
                         onClick={() => signOut()}
                         className="btn ">Logout</button>
