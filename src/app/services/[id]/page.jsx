@@ -12,6 +12,7 @@ export default async function ServiceDetailsPage({ params }) {
 
     const res = await fetch(`http://localhost:3000/api/services/${id}`);
     const data = await res.json();
+    console.log(data);
 
     return (
         <div className="container mx-auto">
