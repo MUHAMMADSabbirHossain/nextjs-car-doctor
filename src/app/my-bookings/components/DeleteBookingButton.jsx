@@ -17,6 +17,7 @@ export default function DeleteBookingButton({ id }) {
 
         router.refresh();
     };
+
     return (
         <>
             <MdDelete
