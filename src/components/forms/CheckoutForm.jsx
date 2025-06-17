@@ -40,7 +40,7 @@ const CheckoutForm = ({ data }) => {
         console.log(bookingPayload);
 
         const res = await fetch(
-            `http://localhost:3000/api/services/`,
+            `https://nextjs-car-doctor-teal.vercel.app/api/services/`,
             {
                 method: "POST",
                 body: JSON.stringify(bookingPayload),

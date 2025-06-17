@@ -10,7 +10,7 @@ export default async function ServiceDetailsPage({ params }) {
     // const servicesCollection = dbConnect(collectionNamesObj.servicesCollection);
     // const data = await servicesCollection.findOne({ _id: new ObjectId(id) });
 
-    const res = await fetch(`http://localhost:3000/api/services/${id}`);
+    const res = await fetch(`https://nextjs-car-doctor-teal.vercel.app/api/services/${id}`);
     const data = await res.json();
     console.log(data);
 

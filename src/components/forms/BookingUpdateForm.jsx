@@ -41,7 +41,7 @@ const CheckoutForm = ({ data }) => {
         console.log(bookingPayload);
 
         const res = await fetch(
-            `http://localhost:3000/api/my-bookings/${data._id}`,
+            `https://nextjs-car-doctor-teal.vercel.app/api/my-bookings/${data._id}`,
             {
                 method: "PATCH",
                 body: JSON.stringify(bookingPayload),
